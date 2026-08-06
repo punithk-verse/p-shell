@@ -10,6 +10,6 @@ void shell_loop(){
    if(strcmp(input,"exit")==0){
      printf("i know u will come again ");
      break; }
-    printf("you typed: %s\n",input);
+    execute_command(input);
   }
 }
