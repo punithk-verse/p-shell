@@ -9,7 +9,7 @@ void execute_command(char *command)
   pid_t pid = fork();
  if (pid==0){
    execlp(command,command,NULL);
-   printf("COMMAND NOT FOUND !);
+   printf("COMMAND NOT FOUND !");
      }
   else if(pid>0)
      {
