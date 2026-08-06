@@ -4,12 +4,12 @@
 #include<sys/wait.h> //ethis give fun for controlling process 
 #include "shell.h"
 
-void execute_command(char *command)
+void execute_command(char **args)
 {
   pid_t pid = fork();
  if (pid==0){
-   execlp(command,command,NULL);
-   printf("COMMAND NOT FOUND !");
+   execvp(args[0],args);
+   printf("COMMAND NOT FOUND !\n");
      }
   else if(pid>0)
      {

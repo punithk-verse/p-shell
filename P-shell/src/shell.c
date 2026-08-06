@@ -6,13 +6,14 @@ void shell_loop(){
   while(1){
    printf("pshell>");
    fgets(input,sizeof(input),stdin);
+   input[strcspn(input,"\n")]='\0';
    char *args[100];
    parse_command(input,args);
-   execute_command(args);
-   input[strcspn(input,"\n")]=0;
+   
    if(strcmp(input,"exit")==0){
      printf("i know u will come again ");
-     break; }
-    execute_command(input);
+     break; 
+    }
+    execute_command(args);
   }
 }
