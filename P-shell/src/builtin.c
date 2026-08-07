@@ -3,17 +3,20 @@
 #include<unistd.h>
 #include<string.h>
 
-void builtin_command(char **args){
-   
-    if(args[1]==NULL)
+int builtin_command(char **args){
+   if(strcmp(args[0], "cd") == 0)
     {
-        printf("Usage : cd<directory>\n");
-        return;
-    }
+     if(args[1]==NULL)
+       {
+        printf("Usage : cd<directory>\n");  
+       }
     else{
         if (chdir(args[1])!=0)
         {
             perror("chdir");
         }
     }
+        return 1;
+    }
+    return 0;
 }
