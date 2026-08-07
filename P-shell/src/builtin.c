@@ -8,7 +8,7 @@ int builtin_command(char **args){
     {
      if(args[1]==NULL)
        {
-        printf("Usage : cd<directory>\n");  
+        printf("Usage : cd <directory>\n");  
        }
     else{
         if (chdir(args[1])!=0)
