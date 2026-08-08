@@ -1,13 +1,7 @@
-P-shell/
-├── README.md
-├── docs/
-│   ├── architecture.md
-│   └── learning-notes.md
-├── src/
-│   ├── main.c
-│   ├── shell.c
-│   ├── parser.c
-│   ├── execute.c
-│   ├── builtin.c
-│   └── shell.h
+
+feature: initial shell
+feature: add built-in cd
+refactor: separate builtin command handling
+docs: document shell architecture
+next → feature: add pipe support
 
