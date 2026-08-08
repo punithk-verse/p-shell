@@ -1,1 +1,13 @@
-creating my own shell using linux and also making use of parser and built in command like cd , using libraries,
+P-shell/
+├── README.md
+├── docs/
+│   ├── architecture.md
+│   └── learning-notes.md
+├── src/
+│   ├── main.c
+│   ├── shell.c
+│   ├── parser.c
+│   ├── execute.c
+│   ├── builtin.c
+│   └── shell.h
+
