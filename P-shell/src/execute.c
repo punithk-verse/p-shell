@@ -54,6 +54,7 @@ void execute_command(char **args)
    }
    trace_dup2(fd[1],STDOUT_FILENO);
    close(fd[1]);
+   trace_exec(getpid(),command1[0]);
    execvp(command1[0],command1);
    perror("execvp");
    exit(1);
@@ -70,6 +71,7 @@ void execute_command(char **args)
       }
       trace_dup2(fd[0],STDIN_FILENO);
       close(fd[0]);
+   trace_exec(getpid(),command2[0]);
    execvp(command2[0],command2);
    perror("execvp");
    exit(1);
