@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<string.h>
-
+#include "shell.h"
 int builtin_command(char **args){
    if(strcmp(args[0], "cd") == 0)
     {
@@ -18,5 +18,15 @@ int builtin_command(char **args){
     }
         return 1;
     }
-    return 0;
+    
+    if(strcmp(args[0],":explain")==0){
+        trace_enabled=!trace_enabled;
+        if(trace_enabled){
+            printf("explain mode:ON\n");
+        }
+        else{printf("Explain mode:OFF\n");
+        }
+    return 1;
+    }
+return 0;
 }

@@ -41,25 +41,34 @@ void execute_command(char **args)
    perror("pipe");
    return;
   }
+  trace_pipe(fd[0],fd[1]);
   pid_t pid1 = fork();
+  if(pid1>0){
+   trace_fork(getpid(),pid1);
+  }
  if (pid1==0){
    close(fd[0]);
    if(dup2(fd[1],STDOUT_FILENO)==-1){
       perror("dup2");
       exit(1);
    }
+   trace_dup2(fd[1],STDOUT_FILENO);
    close(fd[1]);
    execvp(command1[0],command1);
    perror("execvp");
    exit(1);
  }
    pid_t pid2 =fork();
+   if(pid2>0){
+      trace_fork(getpid(),pid2);
+   }
    if(pid2==0){
       close(fd[1]);
       if(dup2(fd[0],STDIN_FILENO)==-1){
          perror("dup2");
          exit(1);
       }
+      trace_dup2(fd[0],STDIN_FILENO);
       close(fd[0]);
    execvp(command2[0],command2);
    perror("execvp");
