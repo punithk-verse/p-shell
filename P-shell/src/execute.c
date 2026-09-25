@@ -20,12 +20,19 @@ void execute_command(char **args)
   }
   if(pipe_index==-1){
     int redirect_index =-1;
+    int append_mode=0;
     for(int i=0;args[i]!=NULL;i++){
       if(strcmp(args[i],">")==0){
         redirect_index=i;
+        append_mode=0;
         break;
       }
+    if(strcmp(args[i],">>")==0){
+      redirect_index=i;
+      append_mode=i;
+      break;
     }
+  }
    pid_t pid=fork();
 
   if(pid==0){
@@ -34,7 +41,14 @@ void execute_command(char **args)
         fprintf(stderr,"pshell: missing output file \n");
         exit(1);
       }
-      int fd=open(args[redirect_index + 1],O_WRONLY | O_CREAT | O_TRUNC,0644);
+      int flags;
+      if(append_mode){
+        flags=O_WRONLY | O_CREAT | O_APPEND;
+      }
+      else{
+        flags=O_WRONLY | O_CREAT | O_TRUNC;
+      }
+      int fd=open(args[redirect_index + 1],flags,0644);
       if(fd==-1){
         perror("open");
         exit(1);
