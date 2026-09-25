@@ -21,3 +21,11 @@ Go to the `src` directory:
 
 ```bash
 cd P-shell/src
+```
+## compile 
+```bash
+gcc *.c -o pshell
+```
+## run 
+```bash
+./pshell
