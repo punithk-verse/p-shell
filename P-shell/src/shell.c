@@ -14,7 +14,10 @@ void shell_loop(){
     {
     printf("pshell> ");
     }
-   fgets(input,sizeof(input),stdin);
+   if(fgets(input,sizeof(input),stdin)==NULL){
+    printf("\n");
+    break;
+   }
    input[strcspn(input,"\n")]='\0';
    char *args[100];
    parse_command(input,args);

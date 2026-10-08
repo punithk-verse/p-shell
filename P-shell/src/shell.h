@@ -10,4 +10,7 @@ void trace_exec(pid_t child_pid,const char *command);
 void parse_command(char *input,char **args);
 int builtin_command(char **args);
 void execute_command(char **args);
+void trace_stdout_pipe(const char *command, int fd);
+void trace_stdin_pipe(const char *command, int fd);
+void trace_stdout_file(const char *command, const char *filename, int fd);
 #endif
