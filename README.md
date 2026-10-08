@@ -3,6 +3,8 @@
 P-Shell is a small Unix-style shell written in C, built as a learning tool for understanding how a shell works underneath.
 Instead of only running commands, P-Shell makes some of the underlying Unix concepts visible — processes, pipes, file descriptors, redirection, and process states.
 
+<img width="700" alt="P-Shell architecture and process experiments" src="https://github.com/user-attachments/assets/1d82ce12-4b35-486f-ad76-fcc482026e4e" />
+
 ## What it does
 
 P-Shell supports basic shell operations:
