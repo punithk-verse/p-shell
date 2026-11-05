@@ -76,30 +76,12 @@ printf("  State : %c (%s)\n",info.state,state_name);
 
     return 1;
 }
-if(strcmp(args[0],":zombie")==0)
-{
-    pid_t pid = fork();
 
-    if(pid == -1)
-    {
-        perror("fork");
-        return 1;
-    }
-
-    if(pid == 0)
-    {
-        printf("[zombie] child PID %d exiting\n",getpid());
-        fflush(stdout);
-        exit(0);
-    }
-    zombie_pid=pid;
-    printf("[zombie] created child PID %d\n",pid);
-    printf("[zombie] parent is NOT waiting...\n");
-    sleep(5);
-    return 1;
-}
     if(strcmp(args[0],":zombie")==0)
 {
+    if(zombie_pid!=-1){
+        printf("[zombie] use:reap before creating another zombie\n");
+        return 1;}
     pid_t pid = fork();
 
     if(pid == -1)
